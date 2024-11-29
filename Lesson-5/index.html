@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		1
+		<span>2</span>
+		<span>3<strong>4</strong></span>
+	</div>
+	<script>
+		class Item{
+			constructor(value){
+				this.value = value;
+				this.children = [];
+			}
+
+			append(child){
+				this.children.push(child);
+			}
+
+			[Symbol.iterator] = function*(){
+				yield this.value; 
+
+				if(this.children.length > 0){
+					for(let val of this.children){
+						yield* val;
+					}
+				}
+			}
+		}
+
+		const root = new Item(10);
+		const sample = new Item(2);
+		sample.append(new Item(8))
+		root.append(sample);
+		root.append(new Item(5));
+		root.append(new Item(3));
+
+
+		for(let val of root){
+			console.log(val);
+		}
+
+
+		Node.prototype[Symbol.iterator] = function*(){
+			yield this;
+			if(this.children.length > 0){
+				for(let val of this.children){
+					yield* val;
+				}
+			}
+		}
+
+		for(let node of document.body){
+			console.log(node);
+		}
+	</script>
+</body>
+</html>

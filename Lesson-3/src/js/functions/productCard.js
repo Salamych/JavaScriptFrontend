@@ -4,8 +4,8 @@ let services = new ProductServices();
 async function productCard(arr){
   let rawProd = '';
   for(const el of arr){
-    let arrRaits = await services.getRaiting(el.id);
-    let rait = arrRaits.average.toFixed(1);
+    // let arrRaits = await services.getRaiting(el.id);
+    // let rait = arrRaits.average.toFixed(1);
     
     rawProd += 
     `<li class="product-item" id="${el.id}">
@@ -14,7 +14,7 @@ async function productCard(arr){
     <div class="product-price">Price: ${el.price} y.e.</div>
     <div class="product-rest">Rest: ${el.rest}</div>
     <div class="product-raiting">
-      <div class="product-raiting__count"> Raiting: ${rait} </div> 
+      <div class="product-raiting__count"> Raiting: getRaiting </div> 
 
       <div class="product-raiting__list">
         <div class="product-raiting__item" data-rate="1">1</div> 

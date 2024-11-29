@@ -80,7 +80,13 @@ window.addEventListener('load', async function(){
       else{
         await services.setRaiting(id, mark, token).then(console.log);
         await services.getRaiting(id).then(data => console.log(data.your));
+
       }
+    }
+
+    if(e.target.classList.contains('product-raiting__count')){
+      id = parseInt(e.target.parentElement.parentElement.id);
+      await services.getRaiting(id, token).then(console.log);
     }
   })
 

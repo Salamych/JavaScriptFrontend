@@ -42,8 +42,16 @@ export class ProductServices{
     return this.getResource(`/products.php`);
   }
 
-  getRaiting(id){
-    return this.getResource(`/ratings.php?id=${id}`);
+  // getRaiting(id){
+  //   return this.getResource(`/ratings.php?id=${id}`);
+  // }
+  getRaiting(id, token){
+    let headers = {
+      "Content-Type": "application/json", 
+      "Authorization": `Bearer ${token}`
+    };
+    
+    return this.getResource(`/ratings.php?id=${id}`, "GET",headers);
   }
 
   setRaiting(id, mark, token){
